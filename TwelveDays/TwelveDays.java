@@ -1,6 +1,6 @@
 class TwelveDays {
     public static String[] days={"first","second","third","fourth","fifth","sixth","seventh","eighth","ninth","tenth","eleventh","twelfth"};
-    public static String[] initialLine={"On the","day of Christmas my true love gave to me:"};
+    public static String[] initialVerse={"On the","day of Christmas my true love gave to me:"};
     public static String[] gifts={
         "a Partridge in a Pear Tree.",
         "two Turtle Doves",
@@ -16,27 +16,27 @@ class TwelveDays {
         "twelve Drummers Drumming"
     };
     String verse(int verseNumber) {
-        String result=initialLine[0]+" "+days[verseNumber-1]+" "+initialLine[1]+" "+buildVerse(verseNumber);
+        String result=initialVerse[0]+" "+days[verseNumber-1]+" "+initialVerse[1]+" "+buildVerse(verseNumber);
         return result;
     }
     String buildVerse(int verseNumber){
-        String s="";
-        for(int i=verseNumber-1;i>=0;i--){
-            s+=gifts[i];
-            if(i>0){
-                s+=", ";
+        String song="";
+        for(int index=verseNumber-1;index>=0;index--){
+            song+=gifts[index];
+            if(index>0){
+                song+=", ";
             }
-            if(i==1){
-                s+="and ";
+            if(index==1){
+                song+="and ";
             }
         }
-        return s=s+"\n";
+        return song+"\n";
     }
     String verses(int startVerse, int endVerse) {
         String resultVerses="";
-        for(int i=startVerse;i<=endVerse;i++){
-            resultVerses+=verse(i);
-             if (i < endVerse) {
+        for(int index=startVerse;index<=endVerse;index++){
+            resultVerses+=verse(index);
+             if (index < endVerse) {
                 resultVerses += "\n";
              }
         }
@@ -45,6 +45,8 @@ class TwelveDays {
     }
     
     String sing() {
-        return verses(1,12);
+        int startVerse=1;
+        int endVerse=12;
+        return verses(startVerse,endVerse);
     }
 }

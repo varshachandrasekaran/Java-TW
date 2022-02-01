@@ -2,8 +2,8 @@ import java.util.List;
 import java.util.ArrayList;
 class PythagoreanTriplet
 {
-    private int a,b,c;
-    private static int N;
+    private int side1,side2,side3;
+    private static int maximum;
     
     private static List<PythagoreanTriplet> tripletsList = new ArrayList<>();
     private static PythagoreanTriplet instance = new PythagoreanTriplet();
@@ -13,11 +13,11 @@ class PythagoreanTriplet
         
     }
     
-    public PythagoreanTriplet(int a, int b, int c)
+    public PythagoreanTriplet(int side1, int side2, int side3)
     {
-        this.a = a;
-        this.b = b;
-        this.c = c;
+        this.side1 = side1;
+        this.side2 = side2;
+        this.side3 = side3;
     }
     
     public static PythagoreanTriplet makeTripletsList()
@@ -33,20 +33,20 @@ class PythagoreanTriplet
     
     public static PythagoreanTriplet thatSumTo(int sum)
     {
-        N = sum;
+        maximum = sum;
         return instance;
     }
     
     public static List<PythagoreanTriplet> build()
     {
-        for(int i = 1; i<=N/3; i++)
+        for(int firstNumber = 1; firstNumber<=maximum/3; firstNumber++)
         {
-            for(int j=i+1; j<=(N-i)/2; j++)
+            for(int secondNumber=firstNumber+1; secondNumber<=(maximum-firstNumber)/2; secondNumber++)
             {
-                int k = N-i-j;
-                if (Math.pow(i,2) + Math.pow(j,2) == Math.pow(k,2))
+                int thirdNumber = maximum-firstNumber-secondNumber;
+                if (Math.pow(firstNumber,2) + Math.pow(secondNumber,2) == Math.pow(thirdNumber,2))
                 {
-                    tripletsList.add(new PythagoreanTriplet(i,j,k));
+                    tripletsList.add(new PythagoreanTriplet(firstNumber,secondNumber,thirdNumber));
                 }
             }
         }
@@ -60,7 +60,7 @@ class PythagoreanTriplet
             return false;
         }
         PythagoreanTriplet triplet = (PythagoreanTriplet) other;
-        if ((this.a == triplet.a ) && (this.b==triplet.b) && (this.c == triplet.c))
+        if ((this.side1 == triplet.side1 ) && (this.side2==triplet.side2) && (this.side3 == triplet.side3))
         {
             return true;
         }

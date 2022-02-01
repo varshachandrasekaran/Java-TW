@@ -3,8 +3,8 @@ class RnaTranscription {
     String transcribe(String dnaStrand) {
        char[] rnaStrand=dnaStrand.toCharArray();
        String resultDnaStrand="";
-       for(int i=0;i<rnaStrand.length;i++){
-           switch(rnaStrand[i]){
+       for(int index=0;index<rnaStrand.length;index++){
+           switch(rnaStrand[index]){
                case 'G': 
                    resultDnaStrand+="C";
                    break;
@@ -22,5 +22,3 @@ class RnaTranscription {
        }
        return resultDnaStrand;
     }
-
-}
